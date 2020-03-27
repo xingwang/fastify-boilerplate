@@ -1,3 +1,4 @@
+import 'dotenv/config.js';
 import { expect } from "chai";
 import fastify from "fastify";
 import buildApp from "./app";
@@ -10,10 +11,15 @@ const jwtWithScopeAuthValidatorReturnsInvalid = () => async (req, reply) => {
 };
 
 describe("somePath", () => {
+  const applicationConfig = {
+    AUTH0_USER_AUDIENCE: 'http://loves.goldenChick.com',
+    AUTH0_DOMAIN: 'goldenChick.com',
+  };
   describe("With an invalid payload", () => {
     const server = fastify({ logger: true });
     const app = buildApp({
       server,
+      applicationConfig,
       validator,
       basicAuthValidator,
       jwtWithScopeAuthValidator: jwtWithScopeAuthValidatorReturnsValid,
@@ -40,6 +46,7 @@ describe("somePath", () => {
     const payload = { name: "3" };
     const app = buildApp({
       server,
+      applicationConfig,
       validator,
       basicAuthValidator,
       jwtWithScopeAuthValidator: jwtWithScopeAuthValidatorReturnsValid,
@@ -68,6 +75,7 @@ describe("somePath", () => {
     const payload = { name: "3" };
     const app = buildApp({
       server,
+      applicationConfig,
       validator,
       jwtWithScopeAuthValidator: jwtWithScopeAuthValidatorReturnsInvalid,
       basicAuthValidator,

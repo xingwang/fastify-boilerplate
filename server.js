@@ -1,3 +1,4 @@
+import 'dotenv/config.js';
 import fastify from "fastify";
 import buildApp from "./app";
 import validator from "./lib/validator";
