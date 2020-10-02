@@ -1,12 +1,14 @@
 {
-  "name": "fastify-user-control",
+  "name": "fastify-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node -r esm .",
     "format": "yarn prettier --write *.js",
-    "test": "nyc mocha --r esm --timeout 5000 . --exit"
+    "lint": "eslint .",
+    "test": "nyc mocha --r esm --timeout 5000 tests --recursive --exit && yarn lint && yarn run vulnerabilities",
+    "vulnerabilities": "npx audit-ci -h"
   },
   "engines": {
     "node": "^12.14.1"
@@ -25,6 +27,10 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-prettier": "^3.1.2",
     "mocha": "^7.1.1",
     "nyc": "^15.0.0",
     "prettier": "2.0.1"
