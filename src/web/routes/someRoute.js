@@ -11,7 +11,7 @@ export default ({ validator }) => async (server) => {
     schema: {
       body: someRouteBodySchema,
     },
-    schemaCompiler: validator(someRouteSchemaOptions),
+    validatorCompiler: validator(someRouteSchemaOptions),
     onRequest: server.auth([
       server.basicAuth,
       server.validateJWTandScope(["search:profile"]),

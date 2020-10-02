@@ -1,8 +1,15 @@
-export default {
-  validate: async () => {
-    // available params: username, password, req, reply
-    console.log(
-      "basic validation in case we want to do extra happy stuff in here"
+import { get } from "lodash/fp";
+
+export default (server) => ({
+  validate: async (username, password, request) => {
+    server.log.info(
+      {
+        data: {
+          requestId: get("headers.x-request-id", request),
+          url: get("req.originalUrl", request),
+        },
+      },
+      "basic validation"
     );
   },
-};
+});
