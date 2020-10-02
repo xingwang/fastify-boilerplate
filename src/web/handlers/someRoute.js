@@ -1,4 +1,4 @@
-import { number, object } from 'yup';
+import { number, object } from "yup";
 
 export const someRouteSchemaOptions = {
   strict: false,
@@ -11,8 +11,8 @@ export const someRouteBodySchema = object({
   name: number().required(),
 });
 
-export const someRouteHandler = async (req, res) => {
+export const someRouteHandler = () => async (req, res) => {
   const { user, query, body } = req;
   console.log(user, query, body);
-  res.send({ hello: 'some world' });
+  res.send({ hello: "some world" });
 };
