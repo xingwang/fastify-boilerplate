@@ -1,19 +1,20 @@
-import 'dotenv/config.js';
+import "dotenv/config.js";
 import { expect } from "chai";
 import fastify from "fastify";
-import buildApp from "./app";
-import validator from "./lib/validator";
-import basicAuthValidator from "./plugins/basicAuth";
+import buildApp from "../../src/web/app";
+import validator from "../../src/web/lib/validator";
+import basicAuthValidator from "../../src/web/plugins/basicAuth";
 
-const jwtWithScopeAuthValidatorReturnsValid = () => async () => Promise.resolve();
+const jwtWithScopeAuthValidatorReturnsValid = () => async () =>
+  Promise.resolve();
 const jwtWithScopeAuthValidatorReturnsInvalid = () => async (req, reply) => {
   reply.code(401);
 };
 
 describe("somePath", () => {
   const applicationConfig = {
-    AUTH0_USER_AUDIENCE: 'http://loves.goldenChick.com',
-    AUTH0_DOMAIN: 'goldenChick.com',
+    AUTH0_USER_AUDIENCE: "http://loves.goldenChick.com",
+    AUTH0_DOMAIN: "goldenChick.com",
   };
   describe("With an invalid payload", () => {
     const server = fastify({ logger: true });
@@ -61,8 +62,7 @@ describe("somePath", () => {
         url: "/foo",
         payload,
         headers: {
-          authorization:
-            "Bearer goodToken",
+          authorization: "Bearer goodToken",
         },
       });
       expect(res.statusCode).to.equal(200);
