@@ -3,22 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/web/server.js",
+  "type": "module",
   "scripts": {
-    "start": "node -r esm .",
+    "start": "node .",
     "format": "yarn prettier --write *.js",
     "lint": "eslint .",
     "test": "nyc mocha --r esm --timeout 5000 tests --recursive --exit && yarn lint && yarn run vulnerabilities",
     "vulnerabilities": "npx audit-ci -h"
   },
   "engines": {
-    "node": "^12.14.1"
+    "node": "^16.0.1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
-    "fastify": "^3.5.0",
+    "fastify": "^3.22.1",
     "fastify-auth": "^1.0.1",
     "fastify-auth0-verify": "^0.3.1",
     "fastify-basic-auth": "^1.0.1",
