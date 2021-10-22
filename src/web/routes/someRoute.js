@@ -2,7 +2,7 @@ import {
   someRouteSchemaOptions,
   someRouteBodySchema,
   someRouteHandler,
-} from "../handlers/someRoute";
+} from "../handlers/someRoute.js";
 
 export default ({ validator }) => async (server) => {
   server.route({

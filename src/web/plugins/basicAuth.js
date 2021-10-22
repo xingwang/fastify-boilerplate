@@ -1,4 +1,6 @@
-import { get } from "lodash/fp";
+import fp from "lodash/fp.js";
+
+const { get } = fp;
 
 export default (server) => ({
   validate: async (username, password, request) => {

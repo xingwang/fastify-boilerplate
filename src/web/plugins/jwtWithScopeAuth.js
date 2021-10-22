@@ -1,5 +1,6 @@
-import { get } from "lodash/fp";
+import fp from "lodash/fp.js";
 
+const { get } = fp;
 export default (server) => (scopes) => async (request, reply) => {
   try {
     await server.authenticate(request, reply);

@@ -1,11 +1,11 @@
 import "dotenv/config.js";
 import throng from "throng";
 import fastify from "fastify";
-import buildApp from "./app";
-import validator from "./lib/validator";
-import basicAuthValidator from "./plugins/basicAuth";
-import jwtWithScopeAuth from "./plugins/jwtWithScopeAuth";
-import validateAndParseEnvironment from "./lib/configValidator";
+import buildApp from "./app.js";
+import validator from "./lib/validator.js";
+import basicAuthValidator from "./plugins/basicAuth.js";
+import jwtWithScopeAuth from "./plugins/jwtWithScopeAuth.js";
+import validateAndParseEnvironment from "./lib/configValidator.js";
 
 const server = fastify({ logger: true });
 
