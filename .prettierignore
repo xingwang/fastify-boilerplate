@@ -1,0 +1,6 @@
+.vscode/
+.nyc_output/
+.config/
+.heroku/
+coverage/
+doc/

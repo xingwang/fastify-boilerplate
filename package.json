@@ -17,25 +17,37 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "esm": "^3.2.25",
+    "dotenv": "^10.0.0",
     "fastify": "^3.22.1",
     "fastify-auth": "^1.0.1",
-    "fastify-auth0-verify": "^0.3.1",
-    "fastify-basic-auth": "^1.0.1",
+    "fastify-auth0-verify": "^0.6.0",
+    "fastify-basic-auth": "^2.1.0",
     "fastify-jwt-authz": "^0.1.2",
     "lodash": "^4.17.21",
     "throng": "^5.0.0",
-    "yup": "^0.29.3"
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "mocha": "^7.1.1",
+    "mocha": "^9.1.3",
     "nyc": "^15.0.0",
-    "prettier": "2.0.1"
+    "prettier": "^2.4.1"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 80,
+    "statements": 80,
+    "functions": 80,
+    "branches": 80,
+    "exclude": [
+      "tests/",
+      "src/web/server.js",
+      "src/web/app.js",
+      "src/routes",
+      "src/plugins"
+    ]
   }
 }
