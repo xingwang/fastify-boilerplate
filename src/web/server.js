@@ -15,19 +15,21 @@ const jwtWithScopeAuthValidator = jwtWithScopeAuth(server);
 const { WEB_CONCURRENCY, NODE_ENV } = process.env;
 
 const start = async (workerId) => {
+  const app = buildApp({
+    server,
+    applicationConfig,
+    validator,
+    jwtWithScopeAuthValidator,
+    basicAuthValidator,
+  });
   try {
-    const app = buildApp({
-      server,
-      applicationConfig,
-      validator,
-      jwtWithScopeAuthValidator,
-      basicAuthValidator,
+    app.ready(async () => {
+      await app.listen(applicationConfig.PORT || 3000, "0.0.0.0");
+      server.log.info(
+        { data: { port: app.server.address().port, workerId } },
+        "Worker: Server running"
+      );
     });
-    await app.listen(applicationConfig.PORT || 3000, "0.0.0.0");
-    server.log.info(
-      { data: { port: app.server.address().port, workerId } },
-      "Worker: Server running"
-    );
   } catch (err) {
     server.log.error(err);
     process.exit(1);

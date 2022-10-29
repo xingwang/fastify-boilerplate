@@ -1,4 +1,4 @@
-import checkAuth from "fastify-auth";
+import checkAuth from "@fastify/auth";
 import auth0Auth from "fastify-auth0-verify";
 import scopeCheck from "fastify-jwt-authz";
 import basicAuth from "fastify-basic-auth";
@@ -17,15 +17,15 @@ export default ({
     secretsTtl: 60000,
   };
 
-  server.register(checkAuth);
-  server.register(basicAuth, basicAuthValidator);
-  server.register(auth0Auth, auth0Options);
-  server.register(scopeCheck);
-  server.decorate("validateJWTandScope", jwtWithScopeAuthValidator);
-
-  server.after(() => {
-    server.register(routes({ validator }));
-  });
+  server
+    .register(checkAuth)
+    .register(basicAuth, basicAuthValidator)
+    .register(auth0Auth, auth0Options)
+    .register(scopeCheck)
+    .decorate("validateJWTandScope", jwtWithScopeAuthValidator)
+    .after(() => {
+      server.register(routes({ validator }));
+    });
 
   return server;
 };
