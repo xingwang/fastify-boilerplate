@@ -1,7 +1,7 @@
 import checkAuth from "@fastify/auth";
 import auth0Auth from "fastify-auth0-verify";
 import scopeCheck from "fastify-jwt-authz";
-import basicAuth from "fastify-basic-auth";
+import basicAuth from "@fastify/basic-auth";
 import routes from "./routes/index.js";
 
 export default ({

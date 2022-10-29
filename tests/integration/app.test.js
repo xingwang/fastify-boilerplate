@@ -1,9 +1,9 @@
 import "dotenv/config.js";
 import { expect } from "chai";
 import fastify from "fastify";
-import buildApp from "../../src/web/app";
-import validator from "../../src/web/lib/validator";
-import basicAuthValidator from "../../src/web/plugins/basicAuth";
+import buildApp from "../../src/web/app.js";
+import validator from "../../src/web/lib/validator.js";
+import basicAuthValidator from "../../src/web/plugins/basicAuth.js";
 
 const jwtWithScopeAuthValidatorReturnsValid = () => async () =>
   Promise.resolve();
