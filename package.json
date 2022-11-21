@@ -20,7 +20,7 @@
     "@fastify/auth": "^4.1.0",
     "@fastify/basic-auth": "^4.0.0",
     "dotenv": "^10.0.0",
-    "fastify": "^4.9.2",
+    "fastify": "^4.10.2",
     "fastify-auth0-verify": "^0.8.3",
     "fastify-jwt-authz": "^0.1.2",
     "lodash": "^4.17.21",
